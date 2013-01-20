@@ -58,7 +58,7 @@ public:
     //Returns a copy of the data vector
     const T at(int I, int j);
     //Returns an integer of the value at I,j
-    T val(int I,int j);
+    T& operator()(int I,int j);
     //Returns the interger at I,j
 
 

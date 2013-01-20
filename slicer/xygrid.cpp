@@ -177,7 +177,7 @@ const T XYGrid<T>::at(int I, int j){
 //Returns an integer of the value at I,j
 
 template <class T>
-T XYGrid<T>::val(int I,int j){
+T& XYGrid<T>::operator()(int I,int j){
     return data_[(ny_*I+j)];
 }
 //Returns the interger at I,j
