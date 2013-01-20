@@ -26,9 +26,9 @@
 #include "confirm.h"
 #include <stdio.h>  // printf
 #include <QDebug>
-#include <QMessageBox>
-#include <QApplication> // for clipboard access
-#include <QClipboard>
+//#include <QMessageBox>
+//#include <QApplication> // for clipboard access
+//#include <QClipboard>
 
 
 
@@ -45,7 +45,7 @@ void _confirm_failed_fn(const char* expression,
           expression,
           file,
           line);
-  qWarning() << "Debug Error:  " << message;
+  //qWarning() << "Debug Error:  " << message;
 
   if (*sentinel) {
 
@@ -61,7 +61,7 @@ void _confirm_failed_fn(const char* expression,
       file,
       line);
 
-    QApplication::clipboard()->setText(message);
+/*    QApplication::clipboard()->setText(message);
     QMessageBox message_box(QMessageBox::Critical,
                             "Debug Error",
                             message,
@@ -85,6 +85,7 @@ void _confirm_failed_fn(const char* expression,
       // continue on our way; the macro will invoke a breakpoint
       qWarning() << message << "; user chose to breakpoint";
       break;
-    }
+    }*/
+    *sentinel = false;//auto ignore
   }
 }

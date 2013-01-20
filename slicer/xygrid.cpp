@@ -172,13 +172,13 @@ QVector<T> XYGrid<T>::asVector(){
 //Returns a copy of the data vector
 template <class T>
 const T XYGrid<T>::at(int I, int j){
-    return T(data_[(ny*I+j)]);
+    return T(data_[(ny_*I+j)]);
 }
 //Returns an integer of the value at I,j
 
 template <class T>
-T XYGrid<T>::operator()(int I,int j){
-    return data_[(ny*I+j)];
+T XYGrid<T>::val(int I,int j){
+    return data_[(ny_*I+j)];
 }
 //Returns the interger at I,j
 
@@ -194,5 +194,11 @@ QList<T> XYGrid<T>::getValueRange(){
 //Returns a list of the values in the slice
 
 template <class T>
-XYGrid<T> XYGrid<T>::getValueGrid( T i){}
+XYGrid<T> XYGrid<T>::getValueGrid( T i){
+    QVector<T> newdata(&data_);
+    for(int i=0;i<data_.size();i++){
+        if(newdata.at(i)!=i){newdata[i]=T();}
+    }
+    return XYGrid(newdata,ny_,stepsize_);
+}
 //Retruns a grid with only the points at the value. Null grid if value not in grid

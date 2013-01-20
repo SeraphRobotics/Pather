@@ -3,10 +3,17 @@
 # -------------------------------------------------
 DEFINES += CONFIRM_ENABLED
 QT += xml
+QT -= gui # for console
+
+
 TARGET = Pather
-TEMPLATE = app
-SOURCES += main.cpp \
-    main.cpp
+#TEMPLATE = app  # for UI
+CONFIG   += console   #for console
+CONFIG   -= app_bundle # for console
+SOURCES += main.cpp
+#LIBS += CoreFoundation
+LIBS += -framework CoreFoundation  # for OSX
+
 #HEADERS +=
 #FORMS += mainwindow.ui\
 
